@@ -4,7 +4,7 @@ using System.Collections;
 public class shoot : MonoBehaviour {
 
 	public GameObject beam;
-	float speed = 40f;
+	float speed = 20f;
 	bool ready = true;
 
 	// Use this for initialization
