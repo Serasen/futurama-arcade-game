@@ -1,15 +1,11 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\gorilla.cs">
+  <MonoDevelop.Ide.Workspace />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\beam.cs">
     <Files>
-      <File FileName="FuturamaGame.sln" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\move.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Gun.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Rocket.cs" Line="25" Column="25" />
-      <File FileName="Assets\Scripts\shoot.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\beam.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\gorilla.cs" Line="20" Column="228" />
-      <File FileName="Assets\Scripts\barrel.cs" Line="13" Column="28" />
+      <File FileName="Assets\Scripts\barrel.cs" Line="6" Column="35" />
+      <File FileName="Assets\Scripts\beam.cs" Line="7" Column="1" />
+      <File FileName="Assets\Scripts\shoot.cs" Line="13" Column="3" />
+      <File FileName="Assets\Scripts\Rocket.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
