@@ -48,6 +48,7 @@
   <ItemGroup>
      <Compile Include="Assets\Scripts\Gun.cs" />
      <Compile Include="Assets\Scripts\Rocket.cs" />
+     <Compile Include="Assets\Scripts\barrel.cs" />
      <Compile Include="Assets\Scripts\beam.cs" />
      <Compile Include="Assets\Scripts\gorilla.cs" />
      <Compile Include="Assets\Scripts\move.cs" />
