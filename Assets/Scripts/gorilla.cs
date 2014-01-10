@@ -17,7 +17,7 @@ public class gorilla : MonoBehaviour {
 		{
 			if(ready) 
 			{
-				(Instantiate(barrel, transform.position + new Vector3(-transform.localScale.x*1.6f,transform.localScale.y*1.4f,0), Quaternion.Euler(Vector3.zero)) as Rigidbody2D).velocity = new Vector2(-10f,0);
+				(Instantiate(barrel, transform.position + new Vector3(-transform.localScale.x*1.6f,transform.localScale.y*1.4f,0), Quaternion.Euler(Vector3.zero)) as Rigidbody2D).velocity = new Vector2(Random.Range(-5f,-15),Random.Range(-2f,3.5f));
 				ready = false;
 			}
 		}

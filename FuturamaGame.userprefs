@@ -5,10 +5,11 @@
       <File FileName="FuturamaGame.sln" Line="1" Column="1" />
       <File FileName="Assets\Scripts\move.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\Gun.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Rocket.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\shoot.cs" Line="28" Column="38" />
+      <File FileName="Assets\Scripts\Rocket.cs" Line="25" Column="25" />
+      <File FileName="Assets\Scripts\shoot.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\beam.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\gorilla.cs" Line="20" Column="86" />
+      <File FileName="Assets\Scripts\gorilla.cs" Line="20" Column="228" />
+      <File FileName="Assets\Scripts\barrel.cs" Line="13" Column="28" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
