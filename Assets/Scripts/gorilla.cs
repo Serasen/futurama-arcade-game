@@ -5,7 +5,7 @@ public class gorilla : MonoBehaviour {
 	public Rigidbody2D barrel;
 	Animator animator;
 	bool ready = true;
-	float speed = 5f;
+	int speed = 5;
 
 	// Use this for initialization
 	void Start () {
@@ -18,7 +18,9 @@ public class gorilla : MonoBehaviour {
 		{
 			if(ready) 
 			{
-				var y = Random.Range(speed*-0.8f,speed*0.8f);
+				// Generates a value between -4 and 4 (the upper bound of a random range is never hit)
+				var y = Random.Range(-speed+1,speed);
+				Debug.Log(y);
 				(Instantiate(barrel, transform.position + new Vector3(-transform.localScale.x*1.6f,transform.localScale.y*1.4f,0), Quaternion.Euler(Vector3.zero)) as Rigidbody2D).velocity = new Vector2(-Mathf.Sqrt(speed * speed - y * y),y);
 				ready = false;
 			}
