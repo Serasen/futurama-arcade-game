@@ -28,7 +28,6 @@ public class ExplosionCreator : MonoBehaviour {
 		explodeScript.pixelSpeed = this.pixelSpeed;
 		explodeScript.numExplosions = this.numExplosions;
 		explodeScript.explosionOffset = this.explosionOffset;
-		explodeScript.StartCoroutine("Explosions");
 		Destroy(gameObject);
 	}
 }
