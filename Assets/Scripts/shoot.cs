@@ -1,11 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class shoot : MonoBehaviour {
+public class Shoot : MonoBehaviour {
 
 	public GameObject beam;
-	float speed = 20f;
-	bool ready = true;
+	public float speed = 20f;
+	public float shootCD = .4f;
+	private bool ready = true;
 
 	// Use this for initialization
 	void Start () {
@@ -25,7 +26,7 @@ public class shoot : MonoBehaviour {
 
 	IEnumerator ShootCD() 
 	{
-		yield return new WaitForSeconds(.2f);
+		yield return new WaitForSeconds(shootCD);
 		ready = true;
 	}
 }
