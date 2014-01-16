@@ -20,7 +20,6 @@ public class Shoot : MonoBehaviour {
 			((GameObject) Instantiate(beam, transform.position + new Vector3(transform.localScale.x*1.3f,0,0), Quaternion.Euler(0,0,0))).rigidbody2D.velocity = new Vector2(speed, 0);
 			ready = false;
 			StartCoroutine("ShootCD");
-
 		}
 	}
 
