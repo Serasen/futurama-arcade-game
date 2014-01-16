@@ -7,17 +7,21 @@ public class Explosion : MonoBehaviour {
 	public int pixelSpeed;
 	public int numExplosions;
 	public float explosionOffset;
+	public bool iAmDestroyerOfWorlds = false;
 
 	void Start() {
 		StartCoroutine("Explosions");
 	}
 	
 	IEnumerator Explosions() {
-		//GetComponent<move>().enabled = false;
 		for(int i = 0; i < numExplosions; i++)
 		{
 			Explode();
 			yield return new WaitForSeconds(explosionOffset);
+		}
+		if(iAmDestroyerOfWorlds) {
+			yield return new WaitForSeconds(2);
+			GameOver();
 		}
 		Destroy(gameObject);
 	}
@@ -40,5 +44,9 @@ public class Explosion : MonoBehaviour {
 
 	private bool CoinFlip() {
 		return Random.value >= 0.5;
+	}
+
+	private void GameOver() {
+		Application.LoadLevel(Application.loadedLevel);
 	}
 }
