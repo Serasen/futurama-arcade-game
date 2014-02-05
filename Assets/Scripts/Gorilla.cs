@@ -17,6 +17,7 @@ public class Gorilla : MonoBehaviour {
 	void OnCollisionEnter2D (Collision2D other){
 		if(other.gameObject.tag.Equals("Beam")){
 			health = health - 1;
+			Destroy (other.gameObject);
 			if (health == 0) {
 				Destroy(gameObject);
 				}
