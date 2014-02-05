@@ -6,12 +6,24 @@ public class Gorilla : MonoBehaviour {
 	Animator animator;
 	bool ready = true;
 	int speed = 5;
+	int health = 10;
 
 	// Use this for initialization
 	void Start () {
 		animator = GetComponent<Animator> ();
 	}
-	
+
+	// Gives gorilla health, destroy gorilla if health equal 0
+	void OnCollisionEnter2D (Collision2D other){
+		if(gameObject.tag.Equals("Beam")){
+			health = health - 1;
+			Destroy(other.gameObject);
+			if (health == 0) {
+				Destroy(gameObject);
+				}
+			}
+		}
+
 	// Update is called once per frame
 	void Update () {
 		if(animator.GetCurrentAnimatorStateInfo(0).IsName("Blend Tree"))
