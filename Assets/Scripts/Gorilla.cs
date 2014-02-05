@@ -15,9 +15,8 @@ public class Gorilla : MonoBehaviour {
 
 	// Gives gorilla health, destroy gorilla if health equal 0
 	void OnCollisionEnter2D (Collision2D other){
-		if(gameObject.tag.Equals("Beam")){
+		if(other.gameObject.tag.Equals("Beam")){
 			health = health - 1;
-			Destroy(other.gameObject);
 			if (health == 0) {
 				Destroy(gameObject);
 				}
