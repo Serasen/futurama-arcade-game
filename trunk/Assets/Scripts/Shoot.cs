@@ -6,6 +6,7 @@ public class Shoot : MonoBehaviour {
 	public GameObject beam;
 	public float speed = 20f;
 	public float shootCD = .4f;
+	public Transform spawnedObjects;
 	private bool ready = true;
 
 	// Use this for initialization
@@ -17,7 +18,9 @@ public class Shoot : MonoBehaviour {
 	void Update () {
 		if (Input.GetButtonDown("Jump") && ready)
 		{
-			((GameObject) Instantiate(beam, transform.position + new Vector3(transform.localScale.x*1.3f,0,0), Quaternion.Euler(0,0,0))).rigidbody2D.velocity = new Vector2(speed, 0);
+			GameObject beamInstance = ((GameObject) Instantiate(beam, transform.position + new Vector3(transform.localScale.x*1.3f,0,0), Quaternion.Euler(0,0,0)));;
+			beamInstance.rigidbody2D.velocity = new Vector2(speed, 0);
+			beamInstance.transform.parent = spawnedObjects;
 			ready = false;
 			StartCoroutine("ShootCD");
 			audio.Play ();

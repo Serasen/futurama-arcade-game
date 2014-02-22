@@ -3,6 +3,7 @@ using System.Collections;
 
 public class Gorilla : MonoBehaviour {
 	public Rigidbody2D barrel;
+	public Transform spawnedObjects;
 	Animator animator;
 	bool ready = true;
 	int speed = 5;
@@ -34,6 +35,7 @@ public class Gorilla : MonoBehaviour {
 				var y = Random.Range(-speed+1,speed);
 				Rigidbody2D barrelRB = (Instantiate(barrel, transform.position + new Vector3(-transform.localScale.x*1.6f,transform.localScale.y*1.4f,0), Quaternion.Euler(Vector3.zero)) as Rigidbody2D);
 				barrelRB.velocity = new Vector2(-Mathf.Sqrt(speed * speed - y * y),y);
+				barrelRB.gameObject.transform.parent = spawnedObjects;
 				ready = false;
 			}
 		}
