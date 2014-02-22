@@ -8,6 +8,7 @@ public class Explosion : MonoBehaviour {
 	public int numExplosions;
 	public float explosionOffset;
 	public bool iAmDestroyerOfWorlds = false;
+	public Transform spawnedObjects;
 
 	void Start() {
 		StartCoroutine("Explosions");
@@ -31,6 +32,7 @@ public class Explosion : MonoBehaviour {
 		{
 			GameObject pixel = ((GameObject) Instantiate(explosionPixel, transform.position, Quaternion.Euler(Vector3.zero)));
 			pixel.rigidbody2D.velocity = GetRandom2DDirection(pixelSpeed*Random.value);
+			pixel.transform.parent = spawnedObjects;
 		}
 
 	}
