@@ -4,8 +4,9 @@ using System.Collections;
 public class Follow : MonoBehaviour {
 
 	public Transform leader;
-	private int xOffset = 5;
-	
+	private float xOffset = 5;
+	private float xOffsetEnd = 5;
+
 	// Update is called once per frame
 	void Update () {
 		if(leader == null) return;
@@ -13,5 +14,13 @@ public class Follow : MonoBehaviour {
 		                                 transform.position.y, 
 		                                 transform.position.z
 		                                 );
+	}
+
+	IEnumerator SlideIn() {
+		while(xOffset > xOffsetEnd)
+		{
+			yield return new WaitForSeconds(.01f);
+			xOffset -= .1f;
+		}
 	}
 }
