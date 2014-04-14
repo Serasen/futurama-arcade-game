@@ -24,7 +24,7 @@ public class ExplosionCreator : MonoBehaviour {
 			CreateExplosion();
 	}
 
-	private void CreateExplosion() {
+	public void CreateExplosion() {
 		GameObject explosion = Instantiate(explosionPrefab, transform.position, transform.rotation) as GameObject;
 		explosion.transform.parent = spawnedObjects;
 		Explosion explodeScript = explosion.GetComponent<Explosion>();

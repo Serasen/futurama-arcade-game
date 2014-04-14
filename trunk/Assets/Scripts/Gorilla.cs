@@ -20,7 +20,7 @@ public class Gorilla : MonoBehaviour {
 			health = health - 1;
 			Destroy (other.gameObject);
 			if (health == 0) {
-				Destroy(gameObject);
+				Die();
 				}
 			}
 		}
@@ -43,5 +43,10 @@ public class Gorilla : MonoBehaviour {
 		{
 			ready = true;
 		}
+	}
+
+	void Die ()
+	{
+		GetComponent<ExplosionCreator>().CreateExplosion();
 	}
 }
