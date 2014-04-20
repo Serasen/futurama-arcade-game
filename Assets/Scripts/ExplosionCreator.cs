@@ -37,6 +37,13 @@ public class ExplosionCreator : MonoBehaviour {
 		if(gameObject.tag.Equals("Player")) {
 			explodeScript.iAmDestroyerOfWorlds = true;
 		}
+		else if(gameObject.tag.Equals("Gorilla")) {
+			explodeScript.isGorillaExplosion = true;
+		}
 		Destroy(gameObject);
+	}
+
+	public float TotalExplosionTime() {
+		return explosionOffset*numExplosions;
 	}
 }

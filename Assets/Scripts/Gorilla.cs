@@ -7,7 +7,8 @@ public class Gorilla : MonoBehaviour {
 	Animator animator;
 	bool ready = true;
 	int speed = 5;
-	int health = 10;
+	int health = 1;
+	public Texture youWinTexture;
 
 	// Use this for initialization
 	void Start () {
