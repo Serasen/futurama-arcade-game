@@ -8,6 +8,7 @@ public class Explosion : MonoBehaviour {
 	public int numExplosions;
 	public float explosionOffset;
 	public bool iAmDestroyerOfWorlds = false;
+	public bool isGorillaExplosion = false;
 	public Transform spawnedObjects;
 
 	void Start() {
@@ -21,10 +22,11 @@ public class Explosion : MonoBehaviour {
 			yield return new WaitForSeconds(explosionOffset);
 		}
 		if(iAmDestroyerOfWorlds) {
-			yield return new WaitForSeconds(2);
 			GameOver();
 		}
-		Destroy(gameObject);
+		else if(isGorillaExplosion) {
+			YouWin();
+		}
 	}
 
 	private void Explode() {
@@ -48,7 +50,29 @@ public class Explosion : MonoBehaviour {
 		return Random.value >= 0.5;
 	}
 
-	private void GameOver() {
+	public void GameOver() {
+		StartCoroutine("GameOverCoroutine");
+	}
+
+	private IEnumerator GameOverCoroutine() {
+		yield return new WaitForSeconds(1);
+		Transform gameover = transform.Find("gameover");
+		gameover.position = new Vector3(gameover.position.x, 0, gameover.position.z);
+		gameover.rotation = Quaternion.Euler(Vector3.zero);
+		gameover.GetComponent<SpriteRenderer>().enabled = true;
+		yield return new WaitForSeconds(2);
+		Application.LoadLevel(Application.loadedLevel);
+	}
+
+	public void YouWin() {
+		StartCoroutine("YouWinCoroutine");
+	}
+	
+	private IEnumerator YouWinCoroutine() {
+		yield return new WaitForSeconds(1);
+		Transform gameover = transform.Find("youwin");
+		gameover.GetComponent<SpriteRenderer>().enabled = true;
+		yield return new WaitForSeconds(2);
 		Application.LoadLevel(Application.loadedLevel);
 	}
 }
