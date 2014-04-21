@@ -21,11 +21,11 @@ public class ExplosionCreator : MonoBehaviour {
 	// Update is called once per frame
 	void OnCollisionEnter2D (Collision2D other) {
 		if(other.gameObject.tag.Equals(explosionCauserTag))
-			CreateExplosion();
+			CreateExplosion(other.contacts[0].point);
 	}
 
-	public void CreateExplosion() {
-		GameObject explosion = Instantiate(explosionPrefab, transform.position, transform.rotation) as GameObject;
+	public void CreateExplosion(Vector2 explosionPosition) {
+		GameObject explosion = Instantiate(explosionPrefab, explosionPosition, transform.rotation) as GameObject;
 		explosion.transform.parent = spawnedObjects;
 		Explosion explodeScript = explosion.GetComponent<Explosion>();
 		explodeScript.explosionPixel = this.explosionPixel;

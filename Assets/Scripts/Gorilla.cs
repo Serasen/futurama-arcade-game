@@ -48,6 +48,6 @@ public class Gorilla : MonoBehaviour {
 
 	void Die ()
 	{
-		GetComponent<ExplosionCreator>().CreateExplosion();
+		GetComponent<ExplosionCreator>().CreateExplosion(this.transform.position);
 	}
 }
