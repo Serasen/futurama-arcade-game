@@ -57,7 +57,7 @@ public class Explosion : MonoBehaviour {
 	private IEnumerator GameOverCoroutine() {
 		yield return new WaitForSeconds(1);
 		Transform gameover = transform.Find("gameover");
-		gameover.position = new Vector3(gameover.position.x, 0, gameover.position.z);
+		gameover.position = Camera.main.ScreenToWorldPoint( new Vector3(Screen.width/2, Screen.height/2, Camera.main.transform.position.z*-1 - 1) );
 		gameover.rotation = Quaternion.Euler(Vector3.zero);
 		gameover.GetComponent<SpriteRenderer>().enabled = true;
 		yield return new WaitForSeconds(2);
@@ -70,9 +70,11 @@ public class Explosion : MonoBehaviour {
 	
 	private IEnumerator YouWinCoroutine() {
 		yield return new WaitForSeconds(1);
-		Transform gameover = transform.Find("youwin");
-		gameover.GetComponent<SpriteRenderer>().enabled = true;
+		Transform youwin = transform.Find("youwin");
+		youwin.position = Camera.main.ScreenToWorldPoint( new Vector3(Screen.width/2, Screen.height/2, Camera.main.transform.position.z*-1 - 1) );
+		youwin.rotation = Quaternion.Euler(Vector3.zero);
+		youwin.GetComponent<SpriteRenderer>().enabled = true;
 		yield return new WaitForSeconds(2);
-		Application.LoadLevel(Application.loadedLevel);
+		Application.LoadLevel("start");
 	}
 }
