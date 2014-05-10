@@ -27,6 +27,10 @@ public class Explosion : MonoBehaviour {
 		else if(isGorillaExplosion) {
 			YouWin();
 		}
+		else {
+//			yield return new WaitForSeconds(3);
+			Destroy(gameObject);
+		}
 	}
 
 	private void Explode() {
@@ -73,8 +77,13 @@ public class Explosion : MonoBehaviour {
 		Transform youwin = transform.Find("youwin");
 		youwin.position = Camera.main.ScreenToWorldPoint( new Vector3(Screen.width/2, Screen.height/2, Camera.main.transform.position.z*-1 - 1) );
 		youwin.rotation = Quaternion.Euler(Vector3.zero);
-		youwin.GetComponent<SpriteRenderer>().enabled = true;
+		SpriteRenderer youWinSprite = youwin.GetComponent<SpriteRenderer>();
+		youWinSprite.enabled = true;
 		yield return new WaitForSeconds(2);
+		youWinSprite.enabled = false;
+		GameObject.Find("credits").GetComponent<ScrollUp>().FulfillDestiny();
+		yield return new WaitForSeconds(45);
 		Application.LoadLevel(Application.loadedLevel);
+
 	}
 }
