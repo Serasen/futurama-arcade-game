@@ -75,6 +75,6 @@ public class Explosion : MonoBehaviour {
 		youwin.rotation = Quaternion.Euler(Vector3.zero);
 		youwin.GetComponent<SpriteRenderer>().enabled = true;
 		yield return new WaitForSeconds(2);
-		Application.LoadLevel("start");
+		Application.LoadLevel(Application.loadedLevel);
 	}
 }

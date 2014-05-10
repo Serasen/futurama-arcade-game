@@ -9,8 +9,8 @@ public class StartSign : MonoBehaviour {
 	
 	void OnTriggerEnter2D(Collider2D c) {
 		if(c.gameObject.tag.Equals("Player")) {
-			//transform.parent.GetComponent<Follow>().enabled = true;
 			c.rigidbody2D.velocity = Vector2.zero;
+			GameObject.Find("space").GetComponent<Jeff>().enabled = true;
 		}
 	}
 }

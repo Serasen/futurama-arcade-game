@@ -9,6 +9,7 @@ public class Jeff : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		rigidbody2D.velocity = new Vector2(horizontalSpeed, 0);
+		space = GameObject.Find("space");
 	}
 
 	void OnCollisionEnter2D(Collision2D c) {
