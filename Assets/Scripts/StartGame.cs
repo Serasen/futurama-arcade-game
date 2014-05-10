@@ -5,7 +5,7 @@ public class StartGame : MonoBehaviour {
 	public GameObject theGameItself;
 
 	void Update() {
-		if(Input.anyKeyDown) {
+		if(Input.anyKey) {
 			InitializeGame();
 		}
 	}

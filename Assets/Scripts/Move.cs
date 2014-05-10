@@ -4,8 +4,8 @@ using System.Collections;
 public class Move : MonoBehaviour {
 
 	float verticalSpeed = 5f;
-	private float maxHeight = 3.5f;
-	private float minHeight = -3.4f;
+	private float maxHeight = 4.6f;
+	private float minHeight = -4.4f;
 
 	// Use this for initialization
 	void Start () {
