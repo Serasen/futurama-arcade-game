@@ -16,6 +16,9 @@ public class Explosion : MonoBehaviour {
 	}
 	
 	IEnumerator Explosions() {
+		if(iAmDestroyerOfWorlds) {
+			GameObject.Find("background music speaker").audio.mute = true;
+		}
 		for(int i = 0; i < numExplosions; i++)
 		{
 			Explode();
@@ -82,8 +85,5 @@ public class Explosion : MonoBehaviour {
 		yield return new WaitForSeconds(2);
 		youWinSprite.enabled = false;
 		GameObject.Find("credits").GetComponent<ScrollUp>().FulfillDestiny();
-		yield return new WaitForSeconds(45);
-		Application.LoadLevel(Application.loadedLevel);
-
 	}
 }
