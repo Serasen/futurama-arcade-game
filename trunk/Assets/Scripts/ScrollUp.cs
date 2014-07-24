@@ -13,6 +13,16 @@ public class ScrollUp : MonoBehaviour {
 	void Update() {
 		if(transform.position.y > maxHeight) {
 			rigidbody2D.velocity = Vector2.zero;
+			EndGame();
 		}
+	}
+
+	private void EndGame()
+	{
+		float flyAwaySpeed = GameObject.Find("approachingObjects").GetComponent<Jeff>().horizontalSpeed * -1;
+		GameObject ship = GameObject.Find("ship");
+		ship.GetComponent<Move>().enabled = false;
+		ship.rigidbody2D.velocity = new Vector2(flyAwaySpeed, 0f);
+		GameObject.Find("death planet").collider2D.enabled = false;
 	}
 }
