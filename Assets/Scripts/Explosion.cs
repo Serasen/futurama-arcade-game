@@ -62,12 +62,12 @@ public class Explosion : MonoBehaviour {
 	}
 
 	private IEnumerator GameOverCoroutine() {
-		yield return new WaitForSeconds(1);
 		Transform gameover = transform.Find("gameover");
 		gameover.position = Camera.main.ScreenToWorldPoint( new Vector3(Screen.width/2, Screen.height/2, Camera.main.transform.position.z*-1 - 1) );
 		gameover.rotation = Quaternion.Euler(Vector3.zero);
 		gameover.GetComponent<SpriteRenderer>().enabled = true;
-		yield return new WaitForSeconds(2);
+		gameover.audio.Play();
+		yield return new WaitForSeconds(4);
 		Application.LoadLevel(Application.loadedLevel);
 	}
 
@@ -76,12 +76,13 @@ public class Explosion : MonoBehaviour {
 	}
 	
 	private IEnumerator YouWinCoroutine() {
-		yield return new WaitForSeconds(1);
+		yield return new WaitForSeconds(1.5f);
 		Transform youwin = transform.Find("youwin");
 		youwin.position = Camera.main.ScreenToWorldPoint( new Vector3(Screen.width/2, Screen.height/2, Camera.main.transform.position.z*-1 - 1) );
 		youwin.rotation = Quaternion.Euler(Vector3.zero);
 		SpriteRenderer youWinSprite = youwin.GetComponent<SpriteRenderer>();
 		youWinSprite.enabled = true;
+		youwin.audio.Play();
 		yield return new WaitForSeconds(2);
 		youWinSprite.enabled = false;
 		GameObject.Find("credits").GetComponent<ScrollUp>().FulfillDestiny();
