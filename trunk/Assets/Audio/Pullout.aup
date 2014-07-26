@@ -1,0 +1,15 @@
+<?xml version="1.0" standalone="no" ?>
+<!DOCTYPE project PUBLIC "-//audacityproject-1.3.0//DTD//EN" "http://audacity.sourceforge.net/xml/audacityproject-1.3.0.dtd" >
+<project xmlns="http://audacity.sourceforge.net/xml/" projname="Pullout_data" version="1.3.0" audacityversion="1.3.13-beta" sel0="0.0039435400" sel1="0.2015399118" vpos="0" h="0.0000000000" zoom="2282.2134642719" rate="22050.0">
+	<tags/>
+	<wavetrack name="Banana Peel Slip Zip-SoundBible.com-803276918" channel="2" linked="0" mute="0" solo="0" height="150" minimized="0" rate="22050" gain="1.0" pan="0.0">
+		<waveclip offset="0.00394354">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="4357">
+				<waveblock start="0">
+					<simpleblockfile filename="e0000c02.au" len="4357" min="-1.0" max="0.999359" rms="0.093808"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="0"/>
+		</waveclip>
+	</wavetrack>
+</project>

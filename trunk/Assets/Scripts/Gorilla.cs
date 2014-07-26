@@ -9,6 +9,8 @@ public class Gorilla : MonoBehaviour {
 	int speed = 5;
 	int health = 10;
 	public Texture youWinTexture;
+	public AudioClip gorillaSound;
+	public AudioClip pulloutSound;
 
 	// Use this for initialization
 	void Start () {
@@ -32,8 +34,8 @@ public class Gorilla : MonoBehaviour {
 		{
 			if(ready) 
 			{
-				// Generates a value between -4 and 4 (the upper bound of a random range is never hit)
-				var y = Random.Range(-speed+1,speed);
+				// Generates a value between -3 and 4 (the upper bound of a random range is never hit)
+				var y = Random.Range(-speed+2,speed);
 				Rigidbody2D barrelRB = (Instantiate(barrel, transform.position + new Vector3(-transform.localScale.x*1.6f,transform.localScale.y*1.4f,0), Quaternion.Euler(Vector3.zero)) as Rigidbody2D);
 				barrelRB.velocity = new Vector2(-Mathf.Sqrt(speed * speed - y * y),y);
 				barrelRB.gameObject.transform.parent = spawnedObjects;
@@ -49,5 +51,17 @@ public class Gorilla : MonoBehaviour {
 	void Die ()
 	{
 		GetComponent<ExplosionCreator>().CreateExplosion(this.transform.position);
+	}
+
+	void PlayGorillaSound()
+	{
+		audio.clip = gorillaSound;
+		audio.Play();
+	}
+
+	void PlayPulloutSound()
+	{
+		audio.clip = pulloutSound;
+		audio.Play();
 	}
 }

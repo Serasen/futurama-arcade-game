@@ -10,15 +10,24 @@ public class Explosion : MonoBehaviour {
 	public bool iAmDestroyerOfWorlds = false;
 	public bool isGorillaExplosion = false;
 	public Transform spawnedObjects;
+	public AudioClip gorillaExplosion;
+	public AudioClip shipExplosion;
 
 	void Start() {
+		if(isGorillaExplosion) {
+			audio.clip = gorillaExplosion;
+		}
+		else if(iAmDestroyerOfWorlds) {
+			audio.clip = shipExplosion;
+		}
 		StartCoroutine("Explosions");
 	}
 	
 	IEnumerator Explosions() {
 		if(iAmDestroyerOfWorlds) {
-			GameObject.Find("background music speaker").audio.mute = true;
+			//MuteOtherSounds() should go here if we want them to stop BEFORE the explosion sound
 		}
+		audio.Play();
 		for(int i = 0; i < numExplosions; i++)
 		{
 			Explode();
@@ -31,7 +40,6 @@ public class Explosion : MonoBehaviour {
 			YouWin();
 		}
 		else {
-//			yield return new WaitForSeconds(3);
 			Destroy(gameObject);
 		}
 	}
@@ -62,6 +70,7 @@ public class Explosion : MonoBehaviour {
 	}
 
 	private IEnumerator GameOverCoroutine() {
+		MuteOtherSounds();
 		Transform gameover = transform.Find("gameover");
 		gameover.position = Camera.main.ScreenToWorldPoint( new Vector3(Screen.width/2, Screen.height/2, Camera.main.transform.position.z*-1 - 1) );
 		gameover.rotation = Quaternion.Euler(Vector3.zero);
@@ -71,12 +80,18 @@ public class Explosion : MonoBehaviour {
 		Application.LoadLevel(Application.loadedLevel);
 	}
 
+	private void MuteOtherSounds()
+	{
+		GameObject.Find("background music speaker").audio.mute = true;
+		GameObject.Find("gorilla").audio.mute = true;
+	}
+
 	public void YouWin() {
 		StartCoroutine("YouWinCoroutine");
 	}
 	
 	private IEnumerator YouWinCoroutine() {
-		yield return new WaitForSeconds(1.5f);
+		yield return new WaitForSeconds(1.7f);
 		Transform youwin = transform.Find("youwin");
 		youwin.position = Camera.main.ScreenToWorldPoint( new Vector3(Screen.width/2, Screen.height/2, Camera.main.transform.position.z*-1 - 1) );
 		youwin.rotation = Quaternion.Euler(Vector3.zero);
