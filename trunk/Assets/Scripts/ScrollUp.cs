@@ -23,6 +23,7 @@ public class ScrollUp : MonoBehaviour {
 		GameObject ship = GameObject.Find("ship");
 		ship.GetComponent<Move>().enabled = false;
 		ship.rigidbody2D.velocity = new Vector2(flyAwaySpeed, 0f);
+		ship.GetComponent<Shoot>().enabled = false;
 		GameObject.Find("death planet").collider2D.enabled = false;
 	}
 }
