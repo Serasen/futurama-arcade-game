@@ -2,10 +2,9 @@
 using System.Collections;
 
 public class Gorilla : MonoBehaviour {
-	public Rigidbody2D barrel;
+	public Rigidbody2D barrel, barrelRB;
 	public Transform spawnedObjects;
 	Animator animator;
-	bool ready = true;
 	int speed = 5;
 	int health = 50;
 	public Texture youWinTexture;
@@ -40,38 +39,39 @@ public class Gorilla : MonoBehaviour {
 		spriteRenderer.color = Color.white;
 	}
 
-	// Update is called once per frame
-	void Update () {
-		if(animator.GetCurrentAnimatorStateInfo(0).IsName("Blend Tree"))
-		{
-			if(ready) 
-			{
-				int y;
-				if(Random.value > .5) {
-					// Half the time we want to hit this sweet spot
-					// It is the one angle that hits the player when he is in a sweet spot that he can safely shoot all other barrels from
-					y = speed -1;
-				}
-				else
-				{
-					// Generates a value between -3 and 4 (the upper bound of a random range is never hit)
-					y = Random.Range(-speed+2,speed);
-				}
-				Rigidbody2D barrelRB = (Instantiate(barrel, transform.position + new Vector3(-transform.localScale.x*1.6f,transform.localScale.y*1.4f,0), Quaternion.Euler(Vector3.zero)) as Rigidbody2D);
-				barrelRB.velocity = new Vector2(-Mathf.Sqrt(speed * speed - y * y),y);
-				barrelRB.gameObject.transform.parent = spawnedObjects;
-				ready = false;
-			}
+	void SpawnBarrel()
+	{
+		barrelRB = (Instantiate(barrel, transform.position + new Vector3(-.05f,.8f,0), Quaternion.Euler(Vector3.zero)) as Rigidbody2D);
+	}
+
+	void ThrowBarrel()
+	{
+		int y;
+		if(Random.value > .5) {
+			// Half the time we want to hit this sweet spot
+			// It is the one angle that hits the player when he is in a sweet spot that he can safely shoot all other barrels from
+			y = speed -1;
 		}
-		else 
+		else
 		{
-			ready = true;
+			// Generates a value between -3 and 4 (the upper bound of a random range is never hit)
+			y = Random.Range(-speed+2,speed);
 		}
+
+		if(barrelRB != null) {
+			barrelRB.velocity = new Vector2(-Mathf.Sqrt(speed * speed - y * y),y);
+			barrelRB.gameObject.transform.parent = spawnedObjects;
+			barrelRB.AddTorque(10f);
+			barrelRB.gravityScale = 0.5f;
+		}
+
+		PlayGorillaSound();
 	}
 
 	void Die ()
 	{
-		GetComponent<ExplosionCreator>().CreateExplosion(this.transform.position);
+		Destroy (barrelRB.gameObject);
+		GetComponent<ExplosionCreator>().CreateExplosion(this.transform.position - new Vector3(0, 1f));
 	}
 
 	void PlayGorillaSound()
